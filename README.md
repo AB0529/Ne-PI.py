@@ -40,4 +40,4 @@ pip3 install -r requirements.txt
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/MoistSenpai/Ne-PI.py/blob/master/LICENCE.md) file for details
