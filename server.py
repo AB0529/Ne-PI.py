@@ -23,7 +23,7 @@ def register_bps(routes):
 
 # Setup flask
 def setup_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='./Share_X_Test')
 
     return app
 
