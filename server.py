@@ -1,9 +1,12 @@
 # Imports
+import os
+from importlib import import_module
+
 from flask import Flask
 from termcolor import colored
-from importlib import import_module
-import os, config
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Automaticly register blueprints from Routes dir
 def register_bps(routes):
@@ -37,4 +40,4 @@ api_routes = [('Routes', r.rstrip('.py'), '/api') for r in os.listdir(routes_dir
 register_bps(api_routes)
 
 # Run app
-app.run(port=config.PORT, debug=True)
+app.run(port=os.getenv('PORT'), debug=True)

@@ -1,5 +1,5 @@
-from flask import Blueprint, request
-import os, mimetypes, config
+from flask import Blueprint, request, url_for
+import os, mimetypes
 
 share_x = Blueprint(__name__, __name__)
 
@@ -13,11 +13,11 @@ def run():
     ext = mimetypes.guess_extension(file.content_type)
 
     # Check key agsint local key
-    if key != config.SHAREX_KEY:
+    if key != os.getenv('SHAREX_KEY'):
         return 'Unauthorized!', 401
     
     # TODO: Save into mongodb
     # Save file
     file.save(os.path.join(f'{os.path.abspath("./")}/Share_X_Test', f'{name}{ext}'))
     
-    return f'{config.URL}/{name}{ext}', 200 
+    return f'{os.getenv("URL")}/{name}{ext}', 200 
