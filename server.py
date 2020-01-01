@@ -19,6 +19,8 @@ def register_bps(routes):
         if hasattr(mod, module):
             bp = getattr(mod, module)
 
+            print(f'\n\n{module}\n\n')
+
             if prefix.strip() == '/':
                 app.register_blueprint(bp)
             else:
@@ -37,11 +39,12 @@ app = setup_app()
 app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 # Register mongo
 mongo = PyMongo(app)
+db = mongo.db.imgs
 
 # Routes in Routes directory
 routes_dir = os.path.abspath('./Routes')
 # List of all routes in dir
-api_routes = [('Routes', r.rstrip('.py'), '/api') for r in os.listdir(routes_dir) if not r.startswith('__')]
+api_routes = [('Routes', r.rstrip('.py'), '/') for r in os.listdir(routes_dir) if not r.startswith('__')]
 # Register routes
 register_bps(api_routes)
 

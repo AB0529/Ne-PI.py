@@ -20,5 +20,6 @@ for r in os.listdir('./Routes'):
     else:
         all_names = [name for name in dir(module) if not name.startswith('__')]
     
+    print(all_names)
     # Update global with modules
     globals().update({name: getattr(module, name) for name in all_names})

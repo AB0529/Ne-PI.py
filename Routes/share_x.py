@@ -5,10 +5,10 @@ from flask import Blueprint, request, url_for
 
 from server import PyMongo
 
-share_x = Blueprint(__name__, __name__)
+share_x = Blueprint('api', __name__)
 
-@share_x.route('/share_x', methods=['POST'])
-def run():
+@share_x.route('/api/share_x', methods=['POST'])
+def sx():
     # Get sent file, key, and name
     file = request.files['d']
     key = request.form.get('key')
