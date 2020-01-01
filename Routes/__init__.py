@@ -16,7 +16,7 @@ for r in os.listdir('./Routes'):
     module = importlib.import_module(f'.{r}', package='Routes')
 
     if (hasattr(module, '__all__')):
-        all_names = modules.__all__
+        all_names = module.__all__
     else:
         all_names = [name for name in dir(module) if not name.startswith('__')]
     
