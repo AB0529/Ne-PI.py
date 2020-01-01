@@ -2,9 +2,10 @@
 import os
 from importlib import import_module
 
-from flask import Flask
-from termcolor import colored
 from dotenv import load_dotenv
+from flask import Flask
+from flask_pymongo import PyMongo
+from termcolor import colored
 
 load_dotenv()
 
@@ -32,6 +33,11 @@ def setup_app():
 
 
 app = setup_app()
+# Setup PyMongo
+app.config['MONGO_URI'] = os.getenv('MONGO_URI')
+# Register mongo
+mongo = PyMongo(app)
+
 # Routes in Routes directory
 routes_dir = os.path.abspath('./Routes')
 # List of all routes in dir

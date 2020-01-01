@@ -1,5 +1,9 @@
+import mimetypes
+import os
+
 from flask import Blueprint, request, url_for
-import os, mimetypes
+
+from server import PyMongo
 
 share_x = Blueprint(__name__, __name__)
 
